@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy · Pebble Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200;0,300;0,400;1,200;1,300&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #f0ede6;
+      --ink: #1d1d1d;
+      --ink-soft: #888880;
+      --ink-faint: #c4c1b8;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'Atkinson Hyperlegible Mono', monospace;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 64px 48px 48px;
+      max-width: 720px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.2s forwards;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      text-decoration: none;
+      margin-bottom: 48px;
+      transition: color 0.3s ease;
+    }
+
+    .back-link:hover {
+      color: var(--ink);
+    }
+
+    .back-link svg {
+      transition: transform 0.3s ease;
+    }
+
+    .back-link:hover svg {
+      transform: translateX(-3px);
+    }
+
+    .page-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+    }
+
+    .page-title {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    .page-meta {
+      font-size: 12px;
+      color: var(--ink-faint);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--ink-faint);
+      margin: 40px auto 0;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 56px 48px 120px;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.5s forwards;
+    }
+
+    .section {
+      margin-bottom: 52px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+    }
+
+    .section p {
+      font-size: 14px;
+      line-height: 1.85;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: var(--ink-faint);
+      transition: text-decoration-color 0.3s ease;
+    }
+
+    .section a:hover {
+      text-decoration-color: var(--ink);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--ink-faint);
+      padding: 32px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-name {
+      font-size: 15px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+
+    .footer-note {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--ink-faint);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      header {
+        padding: 48px 28px 32px;
+      }
+
+      .content {
+        padding: 40px 28px 80px;
+      }
+
+      footer {
+        padding: 28px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="back-link" href="index.html">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      Back
+    </a>
+    <p class="page-eyebrow">Pebble Journal</p>
+    <h1 class="page-title">Privacy Policy</h1>
+    <p class="page-meta">Last updated: March 2026</p>
+    <div class="divider"></div>
+  </header>
+
+  <div class="content">
+
+    <div class="section">
+      <h2 class="section-title">Data Collection</h2>
+      <p>We do not collect personal data. Journal entries are stored locally on your device.</p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Location</h2>
+      <p>If you choose to enable location, Pebble may store your city name alongside entries.</p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Data Sharing</h2>
+      <p>We do not share your data with third parties.</p>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Contact</h2>
+      <p>If you have any questions, reach us at <a href="mailto:peirongxie1022@icloud.com">peirongxie1022@icloud.com</a>.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <span class="footer-name">Pebble Journal</span>
+    <span class="footer-note">© 2026 · pebblejournal.app</span>
+  </footer>
+
+</body>
+</html>
