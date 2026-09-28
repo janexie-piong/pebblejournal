@@ -304,6 +304,11 @@
       object-fit: cover;
     }
 
+    .screen-video::-webkit-media-controls-start-playback-button {
+      display: none !important;
+      -webkit-appearance: none;
+    }
+
     .hero-sub {
       font-family: 'Atkinson Hyperlegible Next', sans-serif;
       font-weight: 400;
@@ -479,10 +484,10 @@
 
       .hero {
         grid-template-columns: 1fr;
-        grid-template-areas: "copy" "cta" "phone";
+        grid-template-areas: "copy" "phone" "cta";
         justify-items: center;
         text-align: center;
-        gap: 32px;
+        gap: 28px;
         padding: 32px 24px 40px;
       }
 
@@ -510,7 +515,8 @@
       }
 
       .phone {
-        height: min(600px, 80svh);
+        height: min(600px, calc(100svh - 290px));
+        min-height: 360px;
       }
     }
 
@@ -537,18 +543,6 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-actions {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .btn-primary {
-        width: 100%;
-        justify-content: center;
       }
     }
 
