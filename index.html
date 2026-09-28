@@ -588,7 +588,7 @@
             <svg viewBox="0 0 26 12"><rect x="0.5" y="0.5" width="22" height="11" rx="3" fill="none" stroke="currentColor" stroke-opacity="0.4"/><rect x="2" y="2" width="19" height="8" rx="1.8" fill="currentColor"/><rect x="24" y="4" width="1.6" height="4" rx="0.8" fill="currentColor" fill-opacity="0.4"/></svg>
           </span>
         </div>
-        <video class="screen-video" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-label="Pebble Journal app demo">
+        <video class="screen-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="pebble-demo-poster.jpg" disablepictureinpicture disableremoteplayback aria-label="Pebble Journal app demo">
           <source src="pebble-demo.mov" type='video/mp4; codecs="hvc1"' />
           <source src="pebble-demo.mp4" type="video/mp4" />
         </video>
@@ -627,11 +627,32 @@
 
     // Keep the demo video looping even if the browser pauses it
     const demo = document.querySelector('.screen-video');
+    demo.muted = true;
     const keepPlaying = () => {
       if (!document.hidden && demo.paused) demo.play().catch(() => {});
     };
     demo.addEventListener('pause', keepPlaying);
+    demo.addEventListener('canplay', keepPlaying);
     document.addEventListener('visibilitychange', keepPlaying);
+
+    // Fall back to H.264 if the HEVC source can't be decoded
+    demo.addEventListener('error', () => {
+      if (!demo.currentSrc.endsWith('.mp4')) {
+        demo.src = 'pebble-demo.mp4';
+        demo.load();
+      }
+    }, true);
+
+    // Retry when the phone scrolls into view (mobile layout)
+    new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) keepPlaying();
+    }).observe(demo);
+
+    // Autoplay can be blocked (e.g. iPhone Low Power Mode) until the first tap
+    ['touchstart', 'pointerdown', 'keydown'].forEach((type) => {
+      window.addEventListener(type, keepPlaying, { once: true, passive: true });
+    });
+
     keepPlaying();
   </script>
 
