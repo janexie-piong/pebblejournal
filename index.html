@@ -261,7 +261,7 @@
       top: 0;
       left: 0;
       right: 0;
-      z-index: 1;
+      z-index: 2;
       height: 16.4cqw;
       padding: 0 7cqw 0 10cqw;
       display: flex;
@@ -302,6 +302,21 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+    }
+
+    .screen-poster {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .screen.is-playing .screen-poster {
+      opacity: 0;
     }
 
     .screen-video::-webkit-media-controls-start-playback-button {
@@ -526,8 +541,8 @@
       }
 
       .phone {
-        height: min(600px, calc(100svh - 290px));
-        min-height: 360px;
+        height: min(620px, calc(100svh - 250px));
+        min-height: 400px;
       }
     }
 
@@ -593,6 +608,7 @@
             <svg viewBox="0 0 26 12"><rect x="0.5" y="0.5" width="22" height="11" rx="3" fill="none" stroke="currentColor" stroke-opacity="0.4"/><rect x="2" y="2" width="19" height="8" rx="1.8" fill="currentColor"/><rect x="24" y="4" width="1.6" height="4" rx="0.8" fill="currentColor" fill-opacity="0.4"/></svg>
           </span>
         </div>
+        <img class="screen-poster" src="pebble-demo-poster.jpg" alt="" />
         <video class="screen-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="pebble-demo-poster.jpg" disablepictureinpicture disableremoteplayback aria-label="Pebble Journal app demo">
           <source src="pebble-demo.mov" type='video/mp4; codecs="hvc1"' />
           <source src="pebble-demo.mp4" type="video/mp4" />
@@ -636,6 +652,7 @@
     const keepPlaying = () => {
       if (!document.hidden && demo.paused) demo.play().catch(() => {});
     };
+    demo.addEventListener('playing', () => demo.parentElement.classList.add('is-playing'));
     demo.addEventListener('pause', keepPlaying);
     demo.addEventListener('canplay', keepPlaying);
     document.addEventListener('visibilitychange', keepPlaying);
