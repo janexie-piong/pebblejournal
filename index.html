@@ -644,6 +644,8 @@
     demo.addEventListener('pause', keepPlaying);
     demo.addEventListener('canplay', keepPlaying);
     document.addEventListener('visibilitychange', keepPlaying);
+    window.addEventListener('pageshow', keepPlaying);
+    window.addEventListener('focus', keepPlaying);
 
     // Fall back to H.264 if the HEVC source can't be decoded
     demo.addEventListener('error', () => {
